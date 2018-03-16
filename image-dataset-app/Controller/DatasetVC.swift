@@ -21,8 +21,13 @@ class DatasetVC: UIViewController {
     }
 
     // Switch to the view which will take new picture
-    @IBAction func addPictureTapped(_ sender: Any) {
+    @IBAction func takePictureTapped(_ sender: Any) {
+        print("Take picture")
     }
-
+    
+    @IBAction func selectDatasetTapped(_ sender: Any) {
+        print("Select dataset")
+    }
+    
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zlz-6e-55P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EZ5-jM-DIr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,42 +11,44 @@
     </dependencies>
     <scenes>
         <!--DatasetVC-->
-        <scene sceneID="Uvg-jF-rn1">
+        <scene sceneID="Aci-z9-F5Y">
             <objects>
-                <viewController id="Zlz-6e-55P" customClass="DatasetVC" customModule="image_dataset_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gdJ-Od-CDi">
+                <viewController id="EZ5-jM-DIr" customClass="DatasetVC" customModule="image_dataset_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ayd-5d-fqg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSn-C5-kO2">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-Bu-WV5">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="y5U-gU-dL4"/>
+                                    <constraint firstAttribute="height" constant="44" id="D0V-5p-D2I"/>
                                 </constraints>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.29411764709999999" green="0.46666666670000001" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
                                 <items>
-                                    <navigationItem title="All Datasets ▼" id="KrV-vw-X6q">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="camera" id="N50-Ks-QAZ">
-                                            <connections>
-                                                <action selector="addPictureTapped:" destination="Zlz-6e-55P" id="Tas-cX-TIy"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="fzi-ac-ULF"/>
+                                    <barButtonItem title="All Datasets ▼" id="fi5-iG-iPS">
+                                        <connections>
+                                            <action selector="selectDatasetTapped:" destination="EZ5-jM-DIr" id="VZE-eO-iKF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nrX-S6-fNi"/>
+                                    <barButtonItem systemItem="camera" id="T2C-QI-RQl">
+                                        <connections>
+                                            <action selector="takePictureTapped:" destination="EZ5-jM-DIr" id="aJy-Gh-dQ9"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
-                            </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Oh-qL-MZR">
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GPs-jL-tDW">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k63-yS-pTf">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B4D-ce-0Z4">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zEQ-cO-a8J">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gKe-FL-2Bp">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -59,20 +61,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cSn-C5-kO2" firstAttribute="leading" secondItem="7Cq-D4-ToN" secondAttribute="leading" id="Pn4-9X-2if"/>
-                            <constraint firstItem="5Oh-qL-MZR" firstAttribute="leading" secondItem="7Cq-D4-ToN" secondAttribute="leading" id="QYp-SO-qDv"/>
-                            <constraint firstItem="7Cq-D4-ToN" firstAttribute="bottom" secondItem="5Oh-qL-MZR" secondAttribute="bottom" id="UhU-o6-luu"/>
-                            <constraint firstItem="cSn-C5-kO2" firstAttribute="trailing" secondItem="7Cq-D4-ToN" secondAttribute="trailing" id="fCg-Lu-3Ev"/>
-                            <constraint firstItem="7Cq-D4-ToN" firstAttribute="trailing" secondItem="5Oh-qL-MZR" secondAttribute="trailing" id="ifM-Td-gRQ"/>
-                            <constraint firstItem="5Oh-qL-MZR" firstAttribute="top" secondItem="cSn-C5-kO2" secondAttribute="bottom" id="jkO-9W-qin"/>
-                            <constraint firstItem="cSn-C5-kO2" firstAttribute="top" secondItem="7Cq-D4-ToN" secondAttribute="top" id="jrf-zR-TxD"/>
+                            <constraint firstItem="ai2-Bu-WV5" firstAttribute="leading" secondItem="bDz-rT-wAT" secondAttribute="leading" id="1ql-kY-AgC"/>
+                            <constraint firstItem="ai2-Bu-WV5" firstAttribute="top" secondItem="bDz-rT-wAT" secondAttribute="top" id="8yE-Z4-PMq"/>
+                            <constraint firstItem="bDz-rT-wAT" firstAttribute="bottom" secondItem="GPs-jL-tDW" secondAttribute="bottom" id="H6g-Dj-BYH"/>
+                            <constraint firstItem="GPs-jL-tDW" firstAttribute="leading" secondItem="bDz-rT-wAT" secondAttribute="leading" id="XGb-b9-qA0"/>
+                            <constraint firstItem="bDz-rT-wAT" firstAttribute="trailing" secondItem="GPs-jL-tDW" secondAttribute="trailing" id="pBD-yk-xqV"/>
+                            <constraint firstItem="GPs-jL-tDW" firstAttribute="top" secondItem="ai2-Bu-WV5" secondAttribute="bottom" id="r8A-5M-b7L"/>
+                            <constraint firstItem="ai2-Bu-WV5" firstAttribute="trailing" secondItem="bDz-rT-wAT" secondAttribute="trailing" id="uPo-Fi-4Oh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7Cq-D4-ToN"/>
+                        <viewLayoutGuide key="safeArea" id="bDz-rT-wAT"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Utd-Vf-1ap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="de2-Rc-XZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="113"/>
+            <point key="canvasLocation" x="1385" y="109"/>
         </scene>
     </scenes>
 </document>
