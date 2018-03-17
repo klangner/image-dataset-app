@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,7 +48,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gKe-FL-2Bp">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollection" id="gKe-FL-2Bp">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -94,11 +93,12 @@
                                             <constraint firstAttribute="height" constant="44" id="CMx-wz-TMb"/>
                                         </constraints>
                                         <items>
+                                            <barButtonItem systemItem="edit" id="Waf-5h-c3m"/>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Hv0-R0-YWZ"/>
-                                            <barButtonItem systemItem="edit" id="itF-qe-hzg"/>
+                                            <barButtonItem systemItem="add" id="itF-qe-hzg"/>
                                         </items>
                                     </toolbar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Datasets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43l-f0-Gnl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datasets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43l-f0-Gnl">
                                         <rect key="frame" x="100.5" y="8" width="68" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -108,36 +108,21 @@
                                         <rect key="frame" x="0.0" y="44" width="270" height="216"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datasetNameCell" id="KeW-pv-Tzr" customClass="DatasetNameCell" customModule="image_dataset_app" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="datasetNameCell" id="6Lq-X0-YaM">
                                                 <rect key="frame" x="0.0" y="28" width="270" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KeW-pv-Tzr" id="8SI-jB-PsA">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Lq-X0-YaM" id="zEd-DV-Vuy">
                                                     <rect key="frame" x="0.0" y="0.0" width="270" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dataset name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryW-hN-z72">
-                                                            <rect key="frame" x="15" y="11" width="240" height="22"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="ryW-hN-z72" secondAttribute="trailing" id="2YG-le-VS9"/>
-                                                        <constraint firstItem="ryW-hN-z72" firstAttribute="bottom" secondItem="8SI-jB-PsA" secondAttribute="bottomMargin" id="PrH-wN-dOI"/>
-                                                        <constraint firstItem="ryW-hN-z72" firstAttribute="top" secondItem="8SI-jB-PsA" secondAttribute="topMargin" id="dr7-cC-8Xc"/>
-                                                        <constraint firstItem="ryW-hN-z72" firstAttribute="leading" secondItem="8SI-jB-PsA" secondAttribute="leadingMargin" id="wnn-rb-GZx"/>
-                                                    </constraints>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="nameLabel" destination="ryW-hN-z72" id="Hcw-Nk-Lpc"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Xcn-fO-aBu" firstAttribute="top" secondItem="43l-f0-Gnl" secondAttribute="bottom" constant="8" id="2eS-Ed-aSx"/>
+                                    <constraint firstItem="43l-f0-Gnl" firstAttribute="top" secondItem="m2t-oO-hib" secondAttribute="top" constant="8" id="8nh-Jh-ctn"/>
                                     <constraint firstItem="EQx-Ht-MxP" firstAttribute="leading" secondItem="m2t-oO-hib" secondAttribute="leading" id="KZh-lm-d8G"/>
                                     <constraint firstItem="43l-f0-Gnl" firstAttribute="centerX" secondItem="m2t-oO-hib" secondAttribute="centerX" id="QkV-75-mZd"/>
                                     <constraint firstAttribute="height" constant="260" id="RGZ-0P-uEd"/>

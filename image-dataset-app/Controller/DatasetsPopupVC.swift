@@ -10,6 +10,8 @@ import UIKit
 
 class DatasetsPopupVC: UIViewController {
 
+    var datasetNames = ["Resitors", "Cars"]
+    
     @IBOutlet weak var datasetsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,16 +32,18 @@ class DatasetsPopupVC: UIViewController {
 extension DatasetsPopupVC : UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return datasetNames.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "datasetNameCell", for: indexPath) as? DatasetNameCell {
-            cell.updateName(with: "Dataset name")
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "datasetNameCell", for: indexPath)
+        if indexPath.row == 0 {
+            cell.textLabel?.text = "All datasets"
         } else {
-            return DatasetNameCell()
+            cell.textLabel?.text = datasetNames[indexPath.row - 1]
         }
+        return cell
     }
+    
 }
 
