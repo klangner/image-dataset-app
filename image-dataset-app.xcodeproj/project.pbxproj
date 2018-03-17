@@ -15,6 +15,7 @@
 		1E648DAB205C3FA1001CA4D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E648DA9205C3FA1001CA4D3 /* LaunchScreen.storyboard */; };
 		1E648DB6205C3FA2001CA4D3 /* image_dataset_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648DB5205C3FA2001CA4D3 /* image_dataset_appTests.swift */; };
 		1E648DC1205C3FA2001CA4D3 /* image_dataset_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648DC0205C3FA2001CA4D3 /* image_dataset_appUITests.swift */; };
+		1E88F3AC205D1F6E00F23803 /* DatasetsPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88F3AB205D1F6E00F23803 /* DatasetsPopupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1E648DBC205C3FA2001CA4D3 /* image-dataset-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "image-dataset-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E648DC0205C3FA2001CA4D3 /* image_dataset_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image_dataset_appUITests.swift; sourceTree = "<group>"; };
 		1E648DC2205C3FA2001CA4D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E88F3AB205D1F6E00F23803 /* DatasetsPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetsPopupVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				1E648D9F205C3FA1001CA4D3 /* DatasetVC.swift */,
+				1E88F3AB205D1F6E00F23803 /* DatasetsPopupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E88F3AC205D1F6E00F23803 /* DatasetsPopupVC.swift in Sources */,
 				1E648DA6205C3FA1001CA4D3 /* image_dataset_app.xcdatamodeld in Sources */,
 				1E648DA0205C3FA1001CA4D3 /* DatasetVC.swift in Sources */,
 				1E648D9E205C3FA1001CA4D3 /* AppDelegate.swift in Sources */,

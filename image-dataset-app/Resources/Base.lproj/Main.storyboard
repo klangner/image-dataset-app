@@ -76,5 +76,64 @@
             </objects>
             <point key="canvasLocation" x="1385" y="109"/>
         </scene>
+        <!--Datasets PopupVC-->
+        <scene sceneID="yEx-RI-uie">
+            <objects>
+                <viewController storyboardIdentifier="datasetsPopup" id="HQE-D9-gAv" customClass="DatasetsPopupVC" customModule="image_dataset_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kSQ-8q-Iwo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2t-oO-hib">
+                                <rect key="frame" x="52.5" y="66" width="270" height="260"/>
+                                <subviews>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-Ht-MxP">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="CMx-wz-TMb"/>
+                                        </constraints>
+                                        <items>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Hv0-R0-YWZ"/>
+                                            <barButtonItem systemItem="edit" id="itF-qe-hzg"/>
+                                        </items>
+                                    </toolbar>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Datasets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43l-f0-Gnl">
+                                        <rect key="frame" x="100.5" y="8" width="68" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xcn-fO-aBu">
+                                        <rect key="frame" x="0.0" y="44" width="270" height="216"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EQx-Ht-MxP" firstAttribute="leading" secondItem="m2t-oO-hib" secondAttribute="leading" id="KZh-lm-d8G"/>
+                                    <constraint firstItem="43l-f0-Gnl" firstAttribute="centerX" secondItem="m2t-oO-hib" secondAttribute="centerX" id="QkV-75-mZd"/>
+                                    <constraint firstAttribute="height" constant="260" id="RGZ-0P-uEd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xcn-fO-aBu" secondAttribute="bottom" id="STp-ct-qUI"/>
+                                    <constraint firstAttribute="trailing" secondItem="EQx-Ht-MxP" secondAttribute="trailing" id="XEh-pl-pnt"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xcn-fO-aBu" secondAttribute="trailing" id="afJ-YL-e91"/>
+                                    <constraint firstItem="Xcn-fO-aBu" firstAttribute="leading" secondItem="m2t-oO-hib" secondAttribute="leading" id="iBf-rb-Kzo"/>
+                                    <constraint firstItem="Xcn-fO-aBu" firstAttribute="top" secondItem="EQx-Ht-MxP" secondAttribute="bottom" id="r5S-eY-mHO"/>
+                                    <constraint firstItem="EQx-Ht-MxP" firstAttribute="top" secondItem="m2t-oO-hib" secondAttribute="top" id="ueP-O1-Gk8"/>
+                                    <constraint firstAttribute="width" constant="270" id="v5J-8D-AqJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m2t-oO-hib" firstAttribute="centerX" secondItem="kSQ-8q-Iwo" secondAttribute="centerX" id="7jH-g7-eG2"/>
+                            <constraint firstItem="m2t-oO-hib" firstAttribute="top" secondItem="71b-Z5-MKT" secondAttribute="top" constant="46" id="hsU-Kl-qUw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="71b-Z5-MKT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKe-L0-Iuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2076" y="104.7976011994003"/>
+        </scene>
     </scenes>
 </document>
