@@ -93,9 +93,17 @@
                                             <constraint firstAttribute="height" constant="44" id="CMx-wz-TMb"/>
                                         </constraints>
                                         <items>
-                                            <barButtonItem systemItem="edit" id="Waf-5h-c3m"/>
+                                            <barButtonItem title="Edit" id="Waf-5h-c3m">
+                                                <connections>
+                                                    <action selector="editTableTapped:" destination="HQE-D9-gAv" id="vsj-Bq-cnR"/>
+                                                </connections>
+                                            </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Hv0-R0-YWZ"/>
-                                            <barButtonItem systemItem="add" id="itF-qe-hzg"/>
+                                            <barButtonItem systemItem="add" id="itF-qe-hzg">
+                                                <connections>
+                                                    <action selector="addNameTapped:" destination="HQE-D9-gAv" id="ha9-2o-frV"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datasets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43l-f0-Gnl">
