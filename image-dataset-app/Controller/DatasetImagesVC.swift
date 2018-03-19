@@ -8,11 +8,16 @@
 
 import UIKit
 
-class DatasetVC: UIViewController {
+class DatasetImagesVC: UIViewController {
 
+    @IBOutlet weak var currentDatasetLabel: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        currentDatasetLabel.title = DataService.instance.currentDatasetName
     }
 
     // Switch to the view which will take new picture
@@ -21,11 +26,8 @@ class DatasetVC: UIViewController {
     }
     
     @IBAction func selectDatasetTapped(_ sender: Any) {
-        if let popupVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetsPopup") as? DatasetsPopupVC {
-            self.addChildViewController(popupVC)
-            popupVC.view.frame = view.frame
-            view.addSubview(popupVC.view)
-            popupVC.didMove(toParentViewController: self)
+        if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectDatasetId") as? SelectDatasetVC {
+            present(selectDatasetVC, animated: true, completion: nil)
         }
     }
     

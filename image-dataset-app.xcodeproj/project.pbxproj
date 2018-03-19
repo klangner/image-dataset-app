@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E5C400B20603E830040244A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5C400A20603E830040244A /* DataService.swift */; };
 		1E648D9E205C3FA1001CA4D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648D9D205C3FA1001CA4D3 /* AppDelegate.swift */; };
-		1E648DA0205C3FA1001CA4D3 /* DatasetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648D9F205C3FA1001CA4D3 /* DatasetVC.swift */; };
+		1E648DA0205C3FA1001CA4D3 /* DatasetImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648D9F205C3FA1001CA4D3 /* DatasetImagesVC.swift */; };
 		1E648DA3205C3FA1001CA4D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E648DA1205C3FA1001CA4D3 /* Main.storyboard */; };
 		1E648DA6205C3FA1001CA4D3 /* image_dataset_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E648DA4205C3FA1001CA4D3 /* image_dataset_app.xcdatamodeld */; };
 		1E648DA8205C3FA1001CA4D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E648DA7205C3FA1001CA4D3 /* Assets.xcassets */; };
 		1E648DAB205C3FA1001CA4D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E648DA9205C3FA1001CA4D3 /* LaunchScreen.storyboard */; };
 		1E648DB6205C3FA2001CA4D3 /* image_dataset_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648DB5205C3FA2001CA4D3 /* image_dataset_appTests.swift */; };
 		1E648DC1205C3FA2001CA4D3 /* image_dataset_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E648DC0205C3FA2001CA4D3 /* image_dataset_appUITests.swift */; };
-		1E88F3AC205D1F6E00F23803 /* DatasetsPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88F3AB205D1F6E00F23803 /* DatasetsPopupVC.swift */; };
+		1E88F3AC205D1F6E00F23803 /* SelectDatasetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E88F3AB205D1F6E00F23803 /* SelectDatasetVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E5C400A20603E830040244A /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		1E648D9A205C3FA1001CA4D3 /* image-dataset-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "image-dataset-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E648D9D205C3FA1001CA4D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E648D9F205C3FA1001CA4D3 /* DatasetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetVC.swift; sourceTree = "<group>"; };
+		1E648D9F205C3FA1001CA4D3 /* DatasetImagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetImagesVC.swift; sourceTree = "<group>"; };
 		1E648DA2205C3FA1001CA4D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E648DA5205C3FA1001CA4D3 /* image_dataset_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = image_dataset_app.xcdatamodel; sourceTree = "<group>"; };
 		1E648DA7205C3FA1001CA4D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		1E648DBC205C3FA2001CA4D3 /* image-dataset-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "image-dataset-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E648DC0205C3FA2001CA4D3 /* image_dataset_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image_dataset_appUITests.swift; sourceTree = "<group>"; };
 		1E648DC2205C3FA2001CA4D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E88F3AB205D1F6E00F23803 /* DatasetsPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetsPopupVC.swift; sourceTree = "<group>"; };
+		1E88F3AB205D1F6E00F23803 /* SelectDatasetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDatasetVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E5C400920603E720040244A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1E5C400A20603E830040244A /* DataService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1E648D91205C3FA1001CA4D3 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				1E648DAC205C3FA2001CA4D3 /* Info.plist */,
+				1E5C400920603E720040244A /* Service */,
 				1E648DD2205C412A001CA4D3 /* View */,
 				1E648DD1205C410D001CA4D3 /* Extension */,
 				1E648DCE205C3FAE001CA4D3 /* Controller */,
@@ -132,8 +143,8 @@
 		1E648DCE205C3FAE001CA4D3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1E648D9F205C3FA1001CA4D3 /* DatasetVC.swift */,
-				1E88F3AB205D1F6E00F23803 /* DatasetsPopupVC.swift */,
+				1E648D9F205C3FA1001CA4D3 /* DatasetImagesVC.swift */,
+				1E88F3AB205D1F6E00F23803 /* SelectDatasetVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,10 +316,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E88F3AC205D1F6E00F23803 /* DatasetsPopupVC.swift in Sources */,
+				1E88F3AC205D1F6E00F23803 /* SelectDatasetVC.swift in Sources */,
 				1E648DA6205C3FA1001CA4D3 /* image_dataset_app.xcdatamodeld in Sources */,
-				1E648DA0205C3FA1001CA4D3 /* DatasetVC.swift in Sources */,
+				1E648DA0205C3FA1001CA4D3 /* DatasetImagesVC.swift in Sources */,
 				1E648D9E205C3FA1001CA4D3 /* AppDelegate.swift in Sources */,
+				1E5C400B20603E830040244A /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

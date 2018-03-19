@@ -8,10 +8,9 @@
 
 import UIKit
 
-class DatasetsPopupVC: UIViewController {
+class SelectDatasetVC: UIViewController {
 
-    var datasetNames = ["Resitors", "Cars", "Fruits", "Vegetable"]
-    
+
     @IBOutlet weak var datasetsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,8 +19,8 @@ class DatasetsPopupVC: UIViewController {
         datasetsTableView.delegate = self
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        closePopup()
+    @IBAction func onCancel(_ sender: Any) {
+        moveToDatasetImagesVC()
     }
     
     @IBAction func editTableTapped(_ sender: UIBarButtonItem) {
@@ -32,89 +31,78 @@ class DatasetsPopupVC: UIViewController {
     @IBAction func addNameTapped(_ sender: UIBarButtonItem) {
     }
     
-    func closePopup() {
-        view.removeFromSuperview()
+    func selectDataset(withName name: String) {
+        DataService.instance.currentDatasetName = name
+        moveToDatasetImagesVC()
     }
+    
+    // Go back to main view controller
+    func moveToDatasetImagesVC() {
+        if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "datasetImagesId") as? DatasetImagesVC {
+            present(selectDatasetVC, animated: false, completion: nil)
+        }
+    }
+    
 }
 
-extension DatasetsPopupVC : UITableViewDataSource, UITableViewDelegate {
+extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
 
     // Number of items in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasetNames.count + 1
+        return DataService.instance.datasetNames().count
     }
 
-    // Create cell for item
+    // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "datasetNameCell", for: indexPath)
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "All Datasets"
+        let name = DataService.instance.datasetNames()[indexPath.row]
+        cell.textLabel?.text = name
+        if name == DataService.instance.currentDatasetName {
             cell.accessoryType = .checkmark
-        } else {
-            cell.textLabel?.text = datasetNames[indexPath.row - 1]
         }
         return cell
     }
     
-    // Since first cell contains "All Datasets" selection, we don't want to edit it
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row > 0
-    }
-    
-    // Since first cell contains "All Datasets" selection, we don't want to move it
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.item > 0
-    }
-    
-    // Row was reordered
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let name = datasetNames.remove(at: sourceIndexPath.row - 1)
-        datasetNames.insert(name, at: destinationIndexPath.row - 1)
+    // When user taps on datset, then select it and go back to main VC
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let name = DataService.instance.datasetNames()[indexPath.row]
+        DataService.instance.currentDatasetName = name
+        moveToDatasetImagesVC()
     }
     
     // Row was deleted or inserted. Update model
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            datasetNames.remove(at: indexPath.item - 1)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            datasetNames.remove(at: indexPath.item - 1)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
             
         }
     }
     
-    
-    
-    // When the user sweps we want to show Edit and Delete actions
+    // When the user swipes we want to show Edit and Delete actions
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let row = indexPath.row - 1
         let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: { (action, indexPath) in
             self.editCell(at: indexPath)
         })
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-            self.datasetNames.remove(at: row)
-            self.datasetsTableView.reloadData()
+//            self.datasetNames.remove(at: row)
+//            self.datasetsTableView.reloadData()
         })
         
         return [deleteAction, editAction]
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if datasetsTableView.isEditing {
-            editCell(at: indexPath)
-        }
-    }
-    
     // Show alert which will allow to edit cell text
     func editCell(at indexPath: IndexPath) {
-        let row = indexPath.row - 1
         let alert = UIAlertController(title: "", message: "Edit Dataset name", preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (textField) in
-            textField.text = self.datasetNames[row]
+            textField.text = DataService.instance.datasetNames()[indexPath.row]
         })
         alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
-            self.datasetNames[row] = alert.textFields!.first!.text!
-            self.datasetsTableView.reloadRows(at: [indexPath], with: .fade)
+//            self.datasetNames[row] = alert.textFields!.first!.text!
+//            self.datasetsTableView.reloadRows(at: [indexPath], with: .fade)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: false)
