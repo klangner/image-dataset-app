@@ -114,11 +114,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Hv0-R0-YWZ"/>
-                                    <barButtonItem title="Edit" id="Waf-5h-c3m">
-                                        <connections>
-                                            <action selector="editTableTapped:" destination="HQE-D9-gAv" id="vsj-Bq-cnR"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem systemItem="add" id="itF-qe-hzg">
                                         <connections>
                                             <action selector="addNameTapped:" destination="HQE-D9-gAv" id="ha9-2o-frV"/>

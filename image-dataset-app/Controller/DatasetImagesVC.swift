@@ -27,7 +27,7 @@ class DatasetImagesVC: UIViewController {
     
     @IBAction func selectDatasetTapped(_ sender: Any) {
         if let selectDatasetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "selectDatasetId") as? SelectDatasetVC {
-            present(selectDatasetVC, animated: true, completion: nil)
+            present(selectDatasetVC, animated: false, completion: nil)
         }
     }
     

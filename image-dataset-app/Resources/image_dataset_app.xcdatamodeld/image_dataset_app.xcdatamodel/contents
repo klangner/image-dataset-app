@@ -4,7 +4,13 @@
         <attribute name="lastUsed" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ImageMetadata" representedClassName="ImageMetadata" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preview" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Dataset" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="ImageMetadata" positionX="-63" positionY="-27" width="128" height="90"/>
     </elements>
 </model>

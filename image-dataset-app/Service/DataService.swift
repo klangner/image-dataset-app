@@ -6,17 +6,26 @@
 //  Copyright © 2018 Krzysztof Langner. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class DataService {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     static let instance = DataService()
     
     private var data = ["My Dataset", "Resitors", "Cars", "Fruits", "Vegetables"]
     private var currentDatasetNameData = "My Dataset"
 
     var currentDatasetName: String {
-        get { return currentDatasetNameData }
+        get {
+            if data.contains(currentDatasetNameData) {
+                return currentDatasetNameData
+            } else if data.count > 0 {
+                return data[0]
+            } else {
+                return "My Dataset"
+            }
+        }
         set { currentDatasetNameData = newValue }
     }
     
@@ -40,14 +49,24 @@ class DataService {
     
     // Add new dataset.
     // If there is already dataset with the given name then add suffix to the name.
-    // Return name of the added dataset
-    func addDataset(withName name: String) -> String {
+    func addDataset(withName name: String) {
         if data.contains(name) {
-            let n = Int(arc4random_uniform(10))
-            return addDataset(withName:"\(name)\(n)")
+            addDataset(withName:"\(name)-COPY")
         } else {
             data.append(name)
-            return name
+            currentDatasetNameData = name
+        }
+    }
+    
+    // Rename dataset. This can be done only if there is no dataset with this name yet
+    func rename(oldName: String, newName: String) -> Bool {
+        guard let index = data.index(of: oldName) else { return false }
+        
+        if data.contains(newName) {
+            return false
+        } else {
+            data[index] = newName
+            return true
         }
     }
 }
