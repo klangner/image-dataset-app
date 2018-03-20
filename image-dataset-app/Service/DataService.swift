@@ -7,66 +7,84 @@
 //
 
 import UIKit
+import CoreData
+
 
 class DataService {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     static let instance = DataService()
     
-    private var data = ["My Dataset", "Resitors", "Cars", "Fruits", "Vegetables"]
-    private var currentDatasetNameData = "My Dataset"
+    func currentDataset(completion: (Dataset) -> ()) {
+        fetchDatasets(completion: {(datasets) in
+            if datasets.count > 0 { completion(datasets[0])}
+            else { self.addDataset(withName: "My Dataset", completion: completion) }
+        })
+    }
 
-    var currentDatasetName: String {
-        get {
-            if data.contains(currentDatasetNameData) {
-                return currentDatasetNameData
-            } else if data.count > 0 {
-                return data[0]
-            } else {
-                return "My Dataset"
-            }
-        }
-        set { currentDatasetNameData = newValue }
-    }
-    
-    // Return all dataset names
-    func datasetNames() -> [String] {
-        return data
-    }
-    
-    // Remove dataset if possible.
-    // There are some restrictions on this function:
-    //  * name must exists
-    //  * datset must be empty
-    func removeDataset(withName name: String) -> Bool {
-        if data.contains(name) {
-            data = data.filter({(dataset) in dataset != name})
-            return true
-        } else {
-            return false
+    // To make dataset current one all we need to do is change it lastUsed date to now
+    // Since current dataset is the one last used
+    func setCurrentDataset(dataset: Dataset, completion: (Dataset) -> ()) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        dataset.lastUsed = Date()
+        do {
+            try managedContext.save()
+            completion(dataset)
+        } catch {
+            debugPrint("Could not save \(error.localizedDescription)")
         }
     }
     
-    // Add new dataset.
-    // If there is already dataset with the given name then add suffix to the name.
-    func addDataset(withName name: String) {
-        if data.contains(name) {
-            addDataset(withName:"\(name)-COPY")
-        } else {
-            data.append(name)
-            currentDatasetNameData = name
+    // Return all stored datasets
+    func fetchDatasets(completion: ([Dataset]) -> ()) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Dataset>(entityName: "Dataset")
+        let sort = NSSortDescriptor(key: #keyPath(Dataset.lastUsed), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        do {
+            let datasets: [Dataset] = try managedContext.fetch(fetchRequest)
+            completion(datasets)
+        } catch {
+            debugPrint("Can fetch Datasets \(error.localizedDescription)")
+        }
+    }
+    
+    // Remove dataset if it is empty
+    func removeDataset(dataset: Dataset, completion: (Bool) -> ()) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(dataset)
+        do {
+            try managedContext.save()
+            completion(true)
+        } catch {
+            debugPrint("Could not delete object \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
+    // Add new dataset with given name
+    func addDataset(withName name: String, completion: (Dataset) -> ()) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let dataset = Dataset(context: managedContext)
+        dataset.name = name
+        dataset.lastUsed = Date()
+        do {
+            try managedContext.save()
+            completion(dataset)
+        } catch {
+            debugPrint("Could not save \(error.localizedDescription)")
         }
     }
     
     // Rename dataset. This can be done only if there is no dataset with this name yet
-    func rename(oldName: String, newName: String) -> Bool {
-        guard let index = data.index(of: oldName) else { return false }
-        
-        if data.contains(newName) {
-            return false
-        } else {
-            data[index] = newName
-            return true
+    func rename(dataset: Dataset, newName: String, completion: (Dataset) -> ()) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        dataset.name = newName
+        do {
+            try managedContext.save()
+            completion(dataset)
+        } catch {
+            debugPrint("Could not save \(error.localizedDescription)")
         }
     }
 }

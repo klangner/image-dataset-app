@@ -13,7 +13,7 @@ class SelectDatasetVC: UIViewController {
 
     @IBOutlet weak var datasetsTableView: UITableView!
     // Cache for dataset names
-    var datasetNames = [String]()
+    var datasetNames = [Dataset]()
     
     
     override func viewDidLoad() {
@@ -24,7 +24,10 @@ class SelectDatasetVC: UIViewController {
     }
     
     func loadDatasets() {
-        datasetNames = DataService.instance.datasetNames()
+        DataService.instance.fetchDatasets(){ datasets in
+            self.datasetNames = datasets
+            self.datasetsTableView.reloadData()
+        }
     }
 
     @IBAction func onCancel(_ sender: Any) {
@@ -33,14 +36,16 @@ class SelectDatasetVC: UIViewController {
     
     @IBAction func addNameTapped(_ sender: UIBarButtonItem) {
         editName(name: "New Dataset", updateHandler: {(name) in
-            DataService.instance.addDataset(withName: name)
-            self.showDatasetImagesVC()
+            DataService.instance.addDataset(withName: name, completion: {(dataset) in
+                self.showDatasetImagesVC()
+            })
         })
     }
     
-    func selectDataset(withName name: String) {
-        DataService.instance.currentDatasetName = name
-        showDatasetImagesVC()
+    func selectDataset(dataset: Dataset) {
+        DataService.instance.setCurrentDataset(dataset: dataset, completion: {(dataset) in
+            showDatasetImagesVC()
+        })
     }
     
     // Go back to main view controller
@@ -78,9 +83,9 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
     // Show item
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "datasetNameCell", for: indexPath)
-        let name = datasetNames[indexPath.row]
-        cell.textLabel?.text = name
-        if name == DataService.instance.currentDatasetName {
+        let dataset = datasetNames[indexPath.row]
+        cell.textLabel?.text = dataset.name
+        if indexPath.row == 0 {
             cell.accessoryType = .checkmark
         }
         return cell
@@ -88,9 +93,8 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
     
     // When user taps on datset, then select it and go back to main VC
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let name = datasetNames[indexPath.row]
-        DataService.instance.currentDatasetName = name
-        showDatasetImagesVC()
+        let dataset = datasetNames[indexPath.row]
+        selectDataset(dataset: dataset)
     }
     
     // When the user swipes we want to show Edit and Delete actions
@@ -101,11 +105,11 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
         })
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-            if DataService.instance.removeDataset(withName: self.datasetNames[indexPath.row]) {
-                self.loadDatasets()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-                self.datasetsTableView.reloadData()
-            }
+            DataService.instance.removeDataset(dataset: self.datasetNames[indexPath.row], completion: { (deleted) in
+                if deleted {
+                    self.loadDatasets()
+                }
+            })
         })
         
         if datasetNames.count > 1 { return [deleteAction, editAction] }
@@ -114,9 +118,9 @@ extension SelectDatasetVC : UITableViewDataSource, UITableViewDelegate {
     
     // Show alert which will allow to edit cell text
     func editCell(at indexPath: IndexPath) {
-        let name = datasetNames[indexPath.row]
-        editName(name: name, updateHandler: {(newName) in
-            if DataService.instance.rename(oldName: name, newName: newName) {
+        let dataset = datasetNames[indexPath.row]
+        editName(name: dataset.name!, updateHandler: {(newName) in
+            DataService.instance.rename(dataset: dataset, newName: newName) { (dataset) in
                 self.loadDatasets()
                 self.datasetsTableView.reloadRows(at: [indexPath], with: .fade)
             }

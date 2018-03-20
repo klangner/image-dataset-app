@@ -17,7 +17,10 @@ class DatasetImagesVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        currentDatasetLabel.title = DataService.instance.currentDatasetName
+        super.viewDidAppear(animated)
+        DataService.instance.currentDataset(completion: {(dataset) in
+            currentDatasetLabel.title = dataset.name
+        })
     }
 
     // Switch to the view which will take new picture
